@@ -72,4 +72,4 @@ Setup:
 
 15. describe pod
 
-   minikube kubectl -- describe pods <podname>
+    minikube kubectl -- describe pods <podname>

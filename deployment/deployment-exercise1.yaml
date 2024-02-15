@@ -3,9 +3,10 @@ kind: Deployment
 metadata:
   name: myapp-deployment
   labels:
-    app: myapp
+    app: myapp-website
+    tier: frontend
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: myapp

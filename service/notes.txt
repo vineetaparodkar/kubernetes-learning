@@ -1,0 +1,14 @@
+# Services
+
+loose coupling for microservices
+-node port service -- listens to port & forward to pod port
+-cluster ip -- service creates virtual ip inside the cluster to enable comm bet services within cluster
+-load balancer service
+
+- node port
+
+- port on service -- port
+- port on node -- node port
+- port on pod -- 
+
+30000 - 32767

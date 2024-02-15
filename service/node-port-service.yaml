@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: NodePort
+  ports: # multiple port mapping can be given
+    - port: 80
+      nodePort: 30008 # only mandatory field
+      targetPort: 80
+  selector:
+    app: myapp

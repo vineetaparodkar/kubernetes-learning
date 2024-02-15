@@ -11,7 +11,7 @@ Setup:
 1. Installing minikube
 
    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-   
+
    sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 2. Verifying Minikube installation
@@ -53,9 +53,9 @@ Setup:
     minikube kubectl label node minikube-demo-m03 node-role.kubernetes.io/worker=worker
 
 11. Add worker node role
-    
+
     minikube kubectl label nodes minikube-demo-m02 role=worker
-    
+
     minikube kubectl label nodes minikube-demo-m03 role=worker
 
 12. Apply minikube deployment
@@ -69,3 +69,7 @@ Setup:
 14. Get pod logs
 
     minikube kubectl -- logs redis-deploy-75d5csssd9-gwbfx
+
+15. describe pod
+
+   minikube kubectl -- describe pods <podname>

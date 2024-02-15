@@ -1,0 +1,11 @@
+apiVersion: v1 #version of kubernetes api services,pods --> v1, replicaset,deployments --> apps/v1
+kind: Pod #type of kubernetes objects created in cluster  services,pods,replicaset,deployments
+metadata: #metadta of kubernetes object name,label used to group pods based on lable
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: frontend
+spec: #specification of kubernetes object
+  containers: #containers is an array indicated with dash(-name) as one pod can contain more then 1 container type
+    - name: nginx-container
+      image: nginx

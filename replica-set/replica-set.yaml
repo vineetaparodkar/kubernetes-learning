@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  replicas: 3
+  selector: # helps to identify what pods fall under it. this is required becoz replica set can manage pods which were not created as a part of replica set as opposed to replication controller which manages pods which were created only with replication controller
+    # selector filed is optional in replication controller by default it takes the labels given in pod spec
+    matchLabels:
+      type: frontend
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx

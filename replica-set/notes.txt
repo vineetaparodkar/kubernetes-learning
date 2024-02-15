@@ -1,0 +1,69 @@
+# ReplicationController and Replicaset
+
+- names will be as per name of kubernates object metadata eg: myapp-rs-2kl96  where myapp-rs is name of replicaset in metadata
+
+- top level fields for replica set
+
+1. apiVersion: apps/v1
+2. kind: ReplicaSet
+3. metadata:
+   name:
+   labels:
+   xx:yy
+4. template:
+    replicas: 2
+    selector:
+        selectMatchLabels:
+            xx: yy
+    <---------content of pod file as is---------->
+        metadata:
+            name:
+            labels:
+            xx:yy
+        containers:
+            - name: yyy
+                image: xxx
+                env:
+                - name: envname
+                value: envvalue
+
+- top level fields for replicationController (difference is kind,apiVersion and no selectMatchLabels required)
+
+1. apiVersion: v1
+2. kind: ReplicationController
+3. metadata:
+   name:
+   labels:
+   xx:yy
+4. template:
+    replicas: 2
+    <---------content of pod file as is---------->
+        metadata:
+            name:
+            labels:
+            xx:yy
+        containers:
+            - name: yyy
+                image: xxx
+                env:
+                - name: envname
+                value: envvalue
+
+
+
+- replica set monitor the pods based on selectMatchLabels
+- replicaset can montior pods not created under replica set also as opposed to replicationController which will handle
+only one created with it
+
+- scale replicaset
+1. using cmdline using replica filename
+kubectl scale --replicas=6 -f replicaset.yaml
+
+2. using declarative approach
+directly update in yaml file and run kubectl apply -f replicaset.yaml 
+
+3. using replica name (this will not update the file)
+kubectl scale --replicas=6 -f replicaset <name>
+
+4. kubectl edit command which would open file in cmdline
+kubectl edit replicaset myreplica

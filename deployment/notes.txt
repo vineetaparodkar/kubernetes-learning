@@ -3,6 +3,7 @@
 ## update and rollout
 
 - new deployment revision is created which helps in rollback 
+- it will take down only 25 % down & then create new in rolling update 
 - recereate strategy - destroy all of them once
 - rolling update strategy - one by one ( default strategy)
 - cmd kubectl set image deployment/xxx nginx-container:1.2.0
